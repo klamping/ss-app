@@ -1,0 +1,155 @@
+.site-header {
+  background: $dark-black;
+  padding: 15px 40px;
+  position: relative;
+  font-size: 12px;
+
+  .site-logo {
+    float: left;
+  }
+
+  .site-actions {
+    float: right;
+
+    > * {
+      float: left;
+      margin-left: 24px;
+    }
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 0;
+  }
+}
+
+.site-logo,
+.site-logo:hover,
+.site-logo:focus {
+  color: $light-grey;
+  font-family: 'proxima_nova_rg', serif;
+
+  svg {
+    width: 27px;
+    height: 25px;
+    stroke: $bright-teal;
+  }
+
+  .site-name {
+    position: relative;
+    bottom: 5px;
+    font-size: 19px;
+  }
+
+  .alt {
+    color: $dark-grey;
+  }
+}
+
+.site-actions {
+  .create-msg {
+    svg {
+      width: 31px;
+      height: 26px;
+      stroke: $light-teal;
+      position: relative;
+      top: 5px;
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        stroke: $bright-teal;
+      }
+    }
+  }
+}
+
+.site-search {
+  position: relative;
+
+  .searchbox {
+    background: $dark-black;
+    border: 1px solid $light-black;
+    border-radius: 3px;
+    padding: 3px 5px;
+    height: 24px;
+    padding-right: 30px;
+    color: $light-grey;
+    width: 160px;
+  }
+
+  .search-action {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      stroke: $light-grey;
+    }
+  }
+}
+
+.profile-menu  {
+  position: relative;
+
+  .profile-action {
+    position: relative;
+    padding-right: 20px;
+
+    .avatar {
+      display: block;
+      border-radius: 3px;
+    }
+
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      border: transparent solid 4px;
+      border-top-color: $light-grey;
+    }
+  }
+
+  .profile-actions {
+    position: absolute;
+    background: $white;
+    right: -17px;
+    border-radius: 5px;
+    top: calc(100% + 5px);
+
+    .action {
+      display: block;
+      padding: 8px 18px;
+      border-top: 1px solid $light-grey;
+      color: $dark-grey;
+
+      &:first-child {
+        border: 0;
+      }
+    }
+
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: 100%;
+      right: 21px;
+      border: transparent solid 5px;
+      border-bottom-color: $white;
+    }
+  }
+}

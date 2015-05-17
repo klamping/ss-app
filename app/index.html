@@ -1,49 +1,88 @@
 <!doctype html>
-<html lang="">
+<html lang="" ng-app="ssapp">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ss app</title>
+    <title>SimplySocial</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/normalize.css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
   </head>
   <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <div class="site-container" ng-controller="mainController">
 
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Sass</li>
-      </ul>
+      <header class="site-header clearfix">
+        <a href="/" class="site-logo">
+          <svg role="img" title="">
+            <use xlink:href="/images/spritemap.svg#icon-logo"></use>
+          </svg>
+          <span class="site-name">
+            <span class="alt">simply</span>social
+          </span>
+        </a>
+
+        <div class="site-actions">
+          <button class="create-msg">
+            <svg role="img" title="Search Site">
+              <use xlink:href="/images/spritemap.svg#icon-new-msg"></use>
+            </svg>
+            <span class="visually-hidden">Create New Message</span>
+          </button>
+
+          <div class="site-search">
+            <input type="text" class="searchbox">
+            <button type="submit" class="search-action">
+              <svg role="img" title="Search Site" class="search-icon">
+                <use xlink:href="/images/spritemap.svg#icon-magnifying-glass"></use>
+              </svg>
+              <span class="visually-hidden">Search Site</span>
+            </button>
+          </div>
+
+          <div class="profile-menu">
+            <button type="button" class="profile-action" ng-click="toggleProfileMenu()">
+              <img src="images/profile.jpg" class="avatar">
+              <span class="visually-hidden">Profile Menu</span>
+            </button>
+            <div class="profile-actions" ng-show="showProfileMenu">
+              <a href="#" class="action">Profile</a>
+              <a href="#" class="action">Followers</a>
+              <a href="#" class="action">Following</a>
+              <a ui-sref="settings" class="action">Settings</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="site-content" ui-view></div>
+
+      <footer class="site-footer">
+        <ul class="nav-footer">
+          <li><a href="#">About Us</a></li><li><!-- keep whitespace from taking room between li's -->
+          <a href="#">Support</a></li><li>
+          <a href="#">Privacy</a></li><li>
+          <a href="#">Terms</a></li>
+        </ul><span class="site-copyright">&copy; 2015 SimplySocial</span>
+      </footer>
+
     </div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

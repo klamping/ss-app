@@ -5,7 +5,8 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var ghPages = require('gulp-gh-pages');
+var ghpages = require('gh-pages');
+var path = require('path');
 
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.scss')
@@ -101,9 +102,9 @@ gulp.task('serve', ['styles', 'fonts'], function () {
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
-gulp.task('deploy', function() {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
+// deploy the public folder to gh-pages
+gulp.task('deploy', ['build'], function(cb) {
+  ghpages.publish(path.join(process.cwd(), 'dist'), cb);
 });
 
 // inject bower components
