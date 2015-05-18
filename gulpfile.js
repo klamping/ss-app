@@ -36,7 +36,7 @@ gulp.task('jshint', function () {
 gulp.task('html', ['styles'], function () {
   var assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src('app/*.html')
+  return gulp.src('app/**/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
@@ -72,7 +72,8 @@ gulp.task('extras', function () {
     '!app/*.html'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'));
+  })
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
@@ -105,7 +106,7 @@ gulp.task('serve', ['styles', 'fonts'], function () {
 });
 
 // deploy the public folder to gh-pages
-gulp.task('deploy', ['build'], function(cb) {
+gulp.task('deploy', function(cb) {
   ghpages.publish(path.join(process.cwd(), 'dist'), cb);
 });
 
@@ -127,7 +128,8 @@ gulp.task('wiredep', function () {
 });
 
 gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('dist/**/*')
+    .pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], function () {

@@ -1,6 +1,6 @@
 /* jshint devel:true */
 angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
-.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /
   $urlRouterProvider.otherwise('/');
@@ -11,11 +11,11 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
       url: '/',
       templateUrl: 'partials/feed.html',
       resolve: {
-        timeline: ['$http', function ($http) {
+        timeline: ["$http", function ($http) {
           return $http.get('data/timeline.json');
         }]
       },
-      controller: ['$scope', 'timeline', function ($scope, timeline) {
+      controller: ["$scope", "timeline", function ($scope, timeline) {
         $scope.timeline = timeline.data.posts;
 
         $scope.sharePost = function () {
@@ -33,7 +33,7 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
     .state('settings', {
       url: '/settings',
       templateUrl: 'partials/settings.html',
-      controller: ['$scope', function ($scope) {
+      controller: ["$scope", function ($scope) {
         $scope.name = 'Jessica Tuan';
         $scope.email = 'jessica@mail.com';
         $scope.pw = 'hunter2';
@@ -41,7 +41,7 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
       }]
     });
 }])
-.run(['timeAgo', function (timeAgo) {
+.run(["timeAgo", function (timeAgo) {
   // reformat 'ago' strings to match our style
   timeAgo.settings.strings.en_US = {
     prefixAgo: null,
@@ -62,7 +62,7 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
     numbers: []
   };
 }])
-.controller('mainController', ['$scope', function ($scope) {
+.controller('mainController', ["$scope", function ($scope) {
   $scope.showProfileMenu = false;
 
   $scope.toggleProfileMenu = function () {
