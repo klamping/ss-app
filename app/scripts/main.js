@@ -32,12 +32,18 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
     })
     .state('settings', {
       url: '/settings',
-      templateUrl: 'partials/settings.html'
+      templateUrl: 'partials/settings.html',
+      controller: function ($scope) {
+        $scope.name = 'Jessica Tuan';
+        $scope.email = 'jessica@mail.com';
+        $scope.pw = 'hunter2';
+        $scope.pwconfirm = 'hunter2';
+      }
     });
 })
 .run(function (timeAgo) {
   // reformat 'ago' strings to match our style
-  timeAgo.settings.strings['en_US'] = {
+  timeAgo.settings.strings.en_US = {
     prefixAgo: null,
     prefixFromNow: null,
     suffixAgo: null,
@@ -73,8 +79,7 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
     restrict: 'E',
     templateUrl: 'partials/timeline.html',
     scope: {
-      data: '=',
-      style: '='
+      data: '='
     },
     controller: function () {
 

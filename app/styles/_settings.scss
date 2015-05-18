@@ -1,0 +1,196 @@
+.settings {
+  width: 575px;
+  max-width: 95%;
+  margin: 0 auto;
+
+  .page-title {
+    color: $light-black;
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $bluegrey;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .avatar {
+    float: left;
+    padding-right: 50px;
+
+    .current-avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 3px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .form-item {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .profile-details {
+    width: 365px;
+    float: left;
+
+    input {
+      border: 1px solid $light-bluegrey;
+      color: $light-black;
+      font-size: 16px;
+      padding: 13px 20px 13px 40px;
+      border-radius: 3px;
+      width: 100%;
+
+    }
+
+    .ng-dirty,
+    .confirm input {
+      border-color: $teal;
+      color: $teal;
+    }
+
+    .profile-save,
+    .profile-change {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+    }
+
+    .profile-save {
+      color: $teal;
+    }
+
+    .profile-change,
+    .confirm .profile-save,
+    .ng-dirty ~ .profile-save {
+      display: block;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12px;
+      width: 16px;
+      height: 16px;
+      stroke: $light-bluegrey;
+      fill: $light-bluegrey;
+    }
+
+    .ng-dirty ~ svg,
+    .confirm svg {
+      stroke: $teal;
+      fill: $teal;
+    }
+  }
+
+  .toggle {
+    .toggle-icon {
+      display: inline-block;
+      padding: 2px;
+      width: 50px;
+      height: 25px;
+      background-color: $bright-bluegrey;
+      border-radius: 25px;
+      position: relative;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .toggle-icon:before,
+    .toggle-icon:after {
+      display: block;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      bottom: 1px;
+      content: "";
+    }
+    .toggle-icon:before {
+      right: 1px;
+      background-color: $bright-bluegrey;
+      border-radius: 25px;
+      transition: background 0.4s;
+    }
+    .toggle-icon:after {
+      width: 22px;
+      top: 2px;
+      bottom: 2px;
+      background-color: $white;
+      border-radius: 100%;
+      transition: margin 0.4s;
+    }
+    :checked + label > .toggle-icon:before {
+      background-color: $teal;
+    }
+    :checked + label > .toggle-icon:after {
+      margin-left: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 16px;
+      color: $bluegrey;
+      .toggle-icon {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .radio {
+    input {
+      display: none;
+    }
+
+    .radio-icon {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+      cursor: pointer;
+      border-radius:  50%;
+      border: 1px solid $light-bluegrey;
+      position: relative;
+      margin-right: 25px;
+    }
+
+    :checked + label > .radio-icon:after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      transform: translate(-50%, -50%);
+      background: $teal;
+      border-radius:  50%;
+    }
+  }
+
+  fieldset {
+    margin: 0 0 25px;
+    padding: 0;
+    border: 0;
+
+    .form-item {
+      margin-bottom: 8px;
+    }
+  }
+}

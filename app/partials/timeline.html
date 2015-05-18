@@ -1,6 +1,6 @@
-<div class="timeline {{style}}">
+<div class="timeline list">
   <div class="post" ng-repeat="post in data" ng-class="{'has-media': post.photo || post.video}">
-    <img src="{{post.avatar}}" alt="" class="avatar">
+    <img ng-src="{{post.avatar}}" alt="" class="avatar">
     <strong class="author">{{post.author}}</strong>
 
     <div class="post-meta">
@@ -18,7 +18,7 @@
     <div class="body">{{post.body}}</div>
 
     <div class="media" ng-show="post.photo || post.video">
-      <img src="{{post.photo || post.video}}">
+      <img ng-src="{{post.photo || post.video}}">
     </div>
 
     <div class="replies" ng-show="post.replies.length > 0">

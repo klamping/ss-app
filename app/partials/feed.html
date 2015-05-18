@@ -1,7 +1,8 @@
 <div class="feed">
   <div class="page-hero">
     <div class="hero-content hero-post">
-      <input type="text" placeholder="What's on your Mind?" ng-model="post" ng-enter="sharePost()">
+      <label for="post-msg" class="post-label" ng-hide="post.length > 0">What's on your Mind?</label>
+      <input type="text" id="post-msg" ng-model="post" ng-enter="sharePost()">
 
       <button type="button" class="add-button">
         <svg role="img" title="">
@@ -36,5 +37,5 @@
     </div>
   </div>
 
-  <feed data="timeline" style="view"></feed>
+  <feed data="timeline"></feed>
 </div>

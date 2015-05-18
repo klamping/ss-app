@@ -47,6 +47,31 @@ button {
   background: none;
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  margin: 50px 0;
+  background: $light-grey;
+}
+
+.btn {
+  color: $white;
+  padding: 10px 24px;
+  border-radius: 2px;
+  background: $teal;
+  font-size: 14px;
+
+  &.muted {
+    text-transform: lowercase;
+    background: $white;
+    color: $light-bluegrey;
+    border: 1px solid $light-bluegrey;
+    border-radius: 3px;
+    padding: 7px;
+    font-size: 12px;
+  }
+}
+
 // Utility Classes
 .visually-hidden {
   position: absolute !important;

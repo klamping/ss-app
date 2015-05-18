@@ -29,38 +29,23 @@
       padding: 15px;
     }
 
+    .post-label {
+      color: $transparentWhite;
+      border-left: 1px solid #fff;
+      padding-left: 5px;
+      font-size: 30px;
+      position: absolute;
+      margin-top: 5px;
+    }
+
     input {
       font-size: 30px;
       width: 100%;
       border: 0;
-      padding: 5px;
+      padding: 5px 0;
       color: $white;
       background: transparent;
       margin-bottom: 35px;
-
-      // this solves a weird bug where having only one opaque border
-      // causes that border to be semi-transparent
-      $transparent: rgba(255, 255, 255, .01);
-
-      &::-webkit-input-placeholder {
-        color: $transparentWhite;
-        border: 1px solid;
-        border-color: $transparent $transparent $transparent $white;
-        padding-left: 2px;
-      }
-      &::-moz-placeholder {
-        color: $transparentWhite;
-        border: 1px solid;
-        border-color: $transparent $transparent $transparent $white;
-        padding-left: 2px;
-        opacity: 1;
-      }
-      &:-ms-input-placeholder {
-        color: $transparentWhite;
-        border: 1px solid;
-        border-color: $transparent $transparent $transparent $white;
-        padding-left: 2px;
-      }
 
       @media screen and (max-width: $breakpoint) {
         font-size: 20px;
@@ -107,7 +92,6 @@
       color: $transparentWhite;
       text-transform: uppercase;
       font-weight: bold;
-      border-bottom: 5px solid transparent;
 
       @media screen and (max-width: $breakpoint) {
         margin-right: 15px;
@@ -116,8 +100,11 @@
 
       &.active {
         color: $white;
-        border-bottom-color: $teal;
+        border-bottom: 5px solid $teal;
+        // @bug IE9 requires you to redeclare the border-color otherwise it uses the text color. IE.....
+        border-color: $teal;
         outline: none;
+        margin-bottom: 0;
       }
 
       &:hover,
