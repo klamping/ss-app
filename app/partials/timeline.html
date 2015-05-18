@@ -1,0 +1,41 @@
+<div class="timeline {{style}}">
+  <div class="post" ng-repeat="post in data" ng-class="{'has-media': post.photo || post.video}">
+    <img src="{{post.avatar}}" alt="" class="avatar">
+    <strong class="author">{{post.author}}</strong>
+
+    <div class="post-meta">
+      <button class="reply">
+        <svg role="img" title="Reply to Post">
+          <use xlink:href="/images/spritemap.svg#icon-reply"></use>
+        </svg>
+      </button><button class="love">
+        <svg role="img" title="Love post">
+          <use xlink:href="/images/spritemap.svg#icon-heart"></use>
+        </svg>
+      </button><div class="time">{{post.timestamp | timeAgo}}</div>
+    </div>
+
+    <div class="body">{{post.body}}</div>
+
+    <div class="media" ng-show="post.photo || post.video">
+      <img src="{{post.photo || post.video}}">
+    </div>
+
+    <div class="replies" ng-show="post.replies.length > 0">
+      <button class="show-replies" ng-click="showReplies=!showReplies">
+        {{ showReplies ? 'Collapse' : 'Expand' }}
+      </button>
+      <div class="reply-content" ng-show="showReplies">
+        <p>TODO Implement this content</p>
+        <!-- <feed data="post.replies" style="'list'"></feed> -->
+        <div class="add-reply">
+          <input type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="load-action">
+    Load More
+  </button>
+</div>

@@ -13,14 +13,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
   </head>
   <body>
-    <div class="site-container" ng-controller="mainController">
+    <div class="site-container" ng-controller="mainController" ng-cloak>
 
       <header class="site-header clearfix">
         <a href="/" class="site-logo">
@@ -33,14 +33,14 @@
         </a>
 
         <div class="site-actions">
-          <button class="create-msg">
+          <button class="create-msg action" ng-click="showModal()">
             <svg role="img" title="Search Site">
               <use xlink:href="/images/spritemap.svg#icon-new-msg"></use>
             </svg>
             <span class="visually-hidden">Create New Message</span>
           </button>
 
-          <div class="site-search">
+          <div class="site-search action">
             <input type="text" class="searchbox">
             <button type="submit" class="search-action">
               <svg role="img" title="Search Site" class="search-icon">
@@ -50,7 +50,7 @@
             </button>
           </div>
 
-          <div class="profile-menu">
+          <div class="profile-menu action">
             <button type="button" class="profile-action" ng-click="toggleProfileMenu()">
               <img src="images/profile.jpg" class="avatar">
               <span class="visually-hidden">Profile Menu</span>
@@ -76,6 +76,34 @@
         </ul><span class="site-copyright">&copy; 2015 SimplySocial</span>
       </footer>
 
+      <div class="msg-modal" ng-show="showMsgModal">
+        <div class="msg-form">
+          <h2 class="title">Create new message</h2>
+
+          <button ng-click="showMsgModal=false" class="close-action">&times;<span class="visually-hidden">Close Modal</span></button>
+
+          <textarea id="msg-text"></textarea>
+
+          <button type="button" class="add-button">
+            <svg role="img" title="">
+              <use xlink:href="/images/spritemap.svg#icon-photo"></use>
+            </svg>
+            Add Photo
+          </button>
+
+          <button type="button" class="add-button">
+            <svg role="img" title="">
+              <use xlink:href="/images/spritemap.svg#icon-video"></use>
+            </svg>
+            Add Video
+          </button>
+
+          <button type="submit" class="post-button">
+            Post
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <!-- build:js scripts/vendor.js -->
@@ -83,6 +111,7 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-timeago/src/timeAgo.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

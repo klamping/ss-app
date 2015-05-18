@@ -94,6 +94,8 @@ gulp.task('serve', ['styles', 'fonts'], function () {
     'app/*.html',
     'app/scripts/**/*.js',
     'app/images/**/*',
+    'app/partials/**/*',
+    'app/data/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
