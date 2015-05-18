@@ -71,7 +71,7 @@ angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
 
   $scope.showModal = function () {
     $scope.showMsgModal = true;
-    $('#msg-text').focus();
+    document.getElementById('msg-text').focus();
   };
 }])
 .directive('feed', function () {
