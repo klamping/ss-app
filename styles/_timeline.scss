@@ -1,0 +1,118 @@
+.timeline {
+  padding-top: 50px;
+
+  &.list {
+    width: 575px;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  &.grid {
+    // TODO implement these styles
+  }
+
+  .post {
+    border-radius: 3px;
+    border: 1px solid $bright-grey;
+    overflow: hidden;
+    margin-bottom: 25px;
+    padding: 23px 25px 0 83px;
+    padding-bottom: 0;
+    position: relative;
+
+    &.has-media {
+      padding-bottom: 315px;
+    }
+
+    .avatar {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      width: 40px;
+      height: 40px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .author {
+      font-weight: normal;
+      font-size: 16px;
+      color: $dark-bluegrey;
+    }
+
+    .body {
+      margin-top: 7px;
+      margin-bottom: 22px;
+      font-size: 15px;
+      color: $bluegrey;
+      line-height: 1.6;
+    }
+
+    .post-meta {
+      float: right;
+      color: $light-grey;
+      font-size: 14px;
+
+      > * {
+        display: inline-block;
+        margin-left: 20px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      svg {
+        width: 13px;
+        height: 13px;
+        stroke: $light-grey;
+      }
+    }
+
+    .media {
+      position: absolute;
+      height: 315px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      img {
+        display: block;
+      }
+    }
+
+    .show-replies {
+      display: inline-block;
+      color: $light-grey;
+      position: relative;
+      padding-right: 20px;
+      font-size: 12px;
+      margin-bottom: 20px;
+
+      &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: calc(50% + 2px);
+        right: 5px;
+        transform: translateY(-50%);
+        border: transparent solid 4px;
+        border-top-color: $light-grey;
+      }
+    }
+  }
+
+  .timeline {
+    padding-top: 0;
+  }
+
+  .load-action {
+    color: $light-grey;
+    display: block;
+    margin: 60px auto 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'proxima_nova_rg', sans-serif;
+  }
+}

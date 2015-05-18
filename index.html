@@ -1,1 +1,124 @@
-<!doctype html> <html ng-app=ssapp> <head> <meta charset=utf-8> <meta name=description> <meta name=viewport content="width=device-width, initial-scale=1"> <title>SimplySocial</title>  <meta http-equiv=X-UA-Compatible content="IE=Edge"> <link rel=stylesheet href=styles/vendor.css> <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel=stylesheet type=text/css> <link rel=stylesheet href=styles/main.css> </head> <body> <div class=site-container ng-controller=mainController ng-cloak> <header class="site-header clearfix"> <a ui-sref=feed class=site-logo> <svg role=img> <use xlink:href=images/spritemap.svg#icon-logo></use> </svg> <span class=site-name> <span class=alt>simply</span>social </span> </a> <div class=site-actions> <button class="create-msg action" ng-click=showModal()> <svg role=img title="Search Site"> <use xlink:href=images/spritemap.svg#icon-new-msg></use> </svg> <span class=visually-hidden>Create New Message</span> </button> <div class="site-search action"> <input type=text class=searchbox> <button type=submit class=search-action> <svg role=img title="Search Site" class=search-icon> <use xlink:href=images/spritemap.svg#icon-magnifying-glass></use> </svg> <span class=visually-hidden>Search Site</span> </button> </div> <div class="profile-menu action"> <button type=button class=profile-action ng-click=toggleProfileMenu()> <img src=images/profile.jpg class=avatar> <span class=visually-hidden>Profile Menu</span> </button> <div class=profile-actions ng-show=showProfileMenu> <a href=# class=action>Profile</a> <a href=# class=action>Followers</a> <a href=# class=action>Following</a> <a ui-sref=settings class=action>Settings</a> </div> </div> </div> </header> <div class=site-content ui-view></div> <footer class=site-footer> <ul class=nav-footer> <li><a href=#>About Us</a></li><li> <a href=#>Support</a></li><li> <a href=#>Privacy</a></li><li> <a href=#>Terms</a></li> </ul><span class=site-copyright>&copy; 2015 SimplySocial</span> </footer> <div class=msg-modal ng-show=showMsgModal> <div class=msg-form> <h2 class=title>Create new message</h2> <button ng-click="showMsgModal=false" class=close-action>&times;<span class=visually-hidden>Close Modal</span></button> <textarea id=msg-text></textarea> <button type=button class=add-button> <svg role=img> <use xlink:href=images/spritemap.svg#icon-photo></use> </svg> Add Photo </button> <button type=button class=add-button> <svg role=img> <use xlink:href=images/spritemap.svg#icon-video></use> </svg> Add Video </button> <button type=submit class="post-button btn"> Post </button> </div> </div> </div> <script src=scripts/vendor.js></script> <script src=scripts/main.js></script> </body> </html> 
+<!doctype html>
+<html lang="" ng-app="ssapp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SimplySocial</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/normalize.css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <div class="site-container" ng-controller="mainController" ng-cloak>
+
+      <header class="site-header clearfix">
+        <a ui-sref="feed" class="site-logo">
+          <svg role="img" title="">
+            <use xlink:href="images/spritemap.svg#icon-logo"></use>
+          </svg>
+          <span class="site-name">
+            <span class="alt">simply</span>social
+          </span>
+        </a>
+
+        <div class="site-actions">
+          <button class="create-msg action" ng-click="showModal()">
+            <svg role="img" title="Search Site">
+              <use xlink:href="images/spritemap.svg#icon-new-msg"></use>
+            </svg>
+            <span class="visually-hidden">Create New Message</span>
+          </button>
+
+          <div class="site-search action">
+            <input type="text" class="searchbox">
+            <button type="submit" class="search-action">
+              <svg role="img" title="Search Site" class="search-icon">
+                <use xlink:href="images/spritemap.svg#icon-magnifying-glass"></use>
+              </svg>
+              <span class="visually-hidden">Search Site</span>
+            </button>
+          </div>
+
+          <div class="profile-menu action">
+            <button type="button" class="profile-action" ng-click="toggleProfileMenu()">
+              <img src="images/profile.jpg" class="avatar">
+              <span class="visually-hidden">Profile Menu</span>
+            </button>
+            <div class="profile-actions" ng-show="showProfileMenu">
+              <a href="#" class="action">Profile</a>
+              <a href="#" class="action">Followers</a>
+              <a href="#" class="action">Following</a>
+              <a ui-sref="settings" class="action">Settings</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="site-content" ui-view></div>
+
+      <footer class="site-footer">
+        <ul class="nav-footer">
+          <li><a href="#">About Us</a></li><li><!-- keep whitespace from taking room between li's -->
+          <a href="#">Support</a></li><li>
+          <a href="#">Privacy</a></li><li>
+          <a href="#">Terms</a></li>
+        </ul><span class="site-copyright">&copy; 2015 SimplySocial</span>
+      </footer>
+
+      <div class="msg-modal" ng-show="showMsgModal">
+        <div class="msg-form">
+          <h2 class="title">Create new message</h2>
+
+          <button ng-click="showMsgModal=false" class="close-action">&times;<span class="visually-hidden">Close Modal</span></button>
+
+          <textarea id="msg-text"></textarea>
+
+          <button type="button" class="add-button">
+            <svg role="img" title="">
+              <use xlink:href="images/spritemap.svg#icon-photo"></use>
+            </svg>
+            Add Photo
+          </button>
+
+          <button type="button" class="add-button">
+            <svg role="img" title="">
+              <use xlink:href="images/spritemap.svg#icon-video"></use>
+            </svg>
+            Add Video
+          </button>
+
+          <button type="submit" class="post-button btn">
+            Post
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-timeago/src/timeAgo.js"></script>
+    <script src="/bower_components/svg4everybody/svg4everybody.min.js"></script>
+    <script src="/bower_components/svg4everybody/svg4everybody.ie8.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

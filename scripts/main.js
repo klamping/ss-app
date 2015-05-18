@@ -1,1 +1,102 @@
-angular.module("ssapp",["ui.router","yaru22.angular-timeago"]).config(function(e,t){t.otherwise("/"),e.state("feed",{url:"/",templateUrl:"partials/feed.html",resolve:{timeline:function(e){return e.get("data/timeline.json")}},controller:function(e,t){e.timeline=t.data.posts,e.sharePost=function(){e.timeline.unshift({author:"Jessica Tuan",timestamp:Date.now(),avatar:"images/profile.jpg",body:e.post}),e.post=""}}}).state("settings",{url:"/settings",templateUrl:"partials/settings.html",controller:function(e){e.name="Jessica Tuan",e.email="jessica@mail.com",e.pw="hunter2",e.pwconfirm="hunter2"}})}).run(function(e){e.settings.strings.en_US={prefixAgo:null,prefixFromNow:null,suffixAgo:null,suffixFromNow:null,seconds:"%ds",minute:"%dm",minutes:"%dm",hour:"",hours:"%dh",day:"",days:"%dd",month:"about a month",months:"%dm",year:"about a year",years:"%d years",numbers:[]}}).controller("mainController",function(e){e.showProfileMenu=!1,e.toggleProfileMenu=function(){e.showProfileMenu=!e.showProfileMenu},e.showModal=function(){e.showMsgModal=!0,document.getElementById("msg-text").focus()}}).directive("feed",function(){return{restrict:"E",templateUrl:"partials/timeline.html",scope:{data:"="},controller:function(){}}}).directive("ngEnter",function(){return function(e,t,n){t.bind("keydown keypress",function(t){13===t.which&&(e.$apply(function(){e.$eval(n.ngEnter,{event:t})}),t.preventDefault())})}});
+/* jshint devel:true */
+angular.module('ssapp', ['ui.router', 'yaru22.angular-timeago'])
+.config(function ($stateProvider, $urlRouterProvider) {
+  //
+  // For any unmatched url, redirect to /
+  $urlRouterProvider.otherwise('/');
+  //
+  // Now set up the states
+  $stateProvider
+    .state('feed', {
+      url: '/',
+      templateUrl: 'partials/feed.html',
+      resolve: {
+        timeline: function ($http) {
+          return $http.get('data/timeline.json');
+        }
+      },
+      controller: function ($scope, timeline) {
+        $scope.timeline = timeline.data.posts;
+
+        $scope.sharePost = function () {
+          $scope.timeline.unshift({
+            'author': 'Jessica Tuan',
+            'timestamp': Date.now(),
+            'avatar': 'images/profile.jpg',
+            'body': $scope.post
+          });
+
+          $scope.post = '';
+        };
+      }
+    })
+    .state('settings', {
+      url: '/settings',
+      templateUrl: 'partials/settings.html',
+      controller: function ($scope) {
+        $scope.name = 'Jessica Tuan';
+        $scope.email = 'jessica@mail.com';
+        $scope.pw = 'hunter2';
+        $scope.pwconfirm = 'hunter2';
+      }
+    });
+})
+.run(function (timeAgo) {
+  // reformat 'ago' strings to match our style
+  timeAgo.settings.strings.en_US = {
+    prefixAgo: null,
+    prefixFromNow: null,
+    suffixAgo: null,
+    suffixFromNow: null,
+    seconds: '%ds',
+    minute: '%dm',
+    minutes: '%dm',
+    hour: '',
+    hours: '%dh',
+    day: '',
+    days: '%dd',
+    month: 'about a month',
+    months: '%dm',
+    year: 'about a year',
+    years: '%d years',
+    numbers: []
+  };
+})
+.controller('mainController', function ($scope) {
+  $scope.showProfileMenu = false;
+
+  $scope.toggleProfileMenu = function () {
+    $scope.showProfileMenu = !$scope.showProfileMenu;
+  };
+
+  $scope.showModal = function () {
+    $scope.showMsgModal = true;
+    document.getElementById('msg-text').focus();
+  };
+})
+.directive('feed', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/timeline.html',
+    scope: {
+      data: '='
+    },
+    controller: function () {
+
+    }
+  };
+})
+// @see http://stackoverflow.com/a/17364716/150552
+.directive('ngEnter', function() {
+  return function(scope, element, attrs) {
+    element.bind('keydown keypress', function(event) {
+      if(event.which === 13) {
+        scope.$apply(function(){
+            scope.$eval(attrs.ngEnter, {'event': event});
+        });
+
+        event.preventDefault();
+      }
+    });
+  };
+});
